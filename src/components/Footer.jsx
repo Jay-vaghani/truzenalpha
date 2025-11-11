@@ -48,7 +48,7 @@ export default function Footer() {
           <Grid item xs={12} md={3}>
             <Typography variant="h6" sx={{ color: 'white', mb: 2 }}>Contact Us</Typography>
             <Typography variant="body2" sx={{ mb: 1 }}>Email: support@truzenalpha.com</Typography>
-            <Typography variant="body2">Address: Gujarat, India</Typography>
+            <Typography variant="body2">India</Typography>
           </Grid>
         </Grid>
         <Divider sx={{ my: 4, bgcolor: alpha('#00e5ff', 0.2) }} />

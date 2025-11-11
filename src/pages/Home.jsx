@@ -62,8 +62,8 @@ import {
 import { TbBrandCpp, TbApi } from "react-icons/tb";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { Link as ScrollLink } from 'react-scroll';
-import ContactForm from '../components/ContactForm';
+import { Link as ScrollLink } from "react-scroll";
+import ContactForm from "../components/ContactForm";
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -92,21 +92,28 @@ export default function Home() {
     {
       title: "Welcome to Truzen Alpha",
       subtitle: "Your All-in-One Trading Solutions Partner",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=80",
-      background: "https://images.unsplash.com/photo-1642790106117-e829e14a795f?w=1920&auto=format&fit=crop&q=80"
+      image:
+        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=80",
+      background:
+        "https://images.unsplash.com/photo-1642790106117-e829e14a795f?w=1920&auto=format&fit=crop&q=80",
     },
     {
       title: "AI-Powered Trading Automation",
-      subtitle: "From strategy to execution, fully automated solutions that deliver results",
-      image: "https://plus.unsplash.com/premium_photo-1664478157873-50d4963c1d11?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2069",
-      background: "https://images.unsplash.com/photo-1639322537228-f710d846310a?w=1920&auto=format&fit=crop&q=80"
+      subtitle:
+        "From strategy to execution, fully automated solutions that deliver results",
+      image:
+        "https://plus.unsplash.com/premium_photo-1664478157873-50d4963c1d11?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2069",
+      background:
+        "https://images.unsplash.com/photo-1639322537228-f710d846310a?w=1920&auto=format&fit=crop&q=80",
     },
     {
       title: "Multi-Market Expertise",
       subtitle: "Indian, Forex, Crypto & Global Markets Covered",
-      image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&auto=format&fit=crop&q=80",
-      background: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=1920&auto=format&fit=crop&q=80"
-    }
+      image:
+        "https://img.freepik.com/free-photo/beautiful-cryptocurrwncy-concept_23-2149250205.jpg?t=st=1762859666~exp=1762863266~hmac=904c5901bcd43841a29a7b9aa6afb863a3684e2ebcc2d1afe5b7202f79a9833b&w=1480",
+      background:
+        "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=1920&auto=format&fit=crop&q=80",
+    },
   ];
 
   const services = [
@@ -182,7 +189,7 @@ export default function Home() {
     {
       icon: <Build />,
       title: "Custom Indicator Development",
-      description: "On TradingView, MetaTrader, NinjaTrader, and more",
+      description: "On TradingView, MetaTrader, NinjaTrader, C Trader and more",
     },
     {
       icon: <History />,
@@ -296,7 +303,7 @@ export default function Home() {
     },
     {
       name: "Forex Brokers",
-      details: "IC Markets, Pepperstone, FXTM",
+      details: "IC Markets, Pepperstone, FXTM, XNS, Vantage",
       icon: <CurrencyExchange />,
     },
     {
@@ -504,7 +511,13 @@ export default function Home() {
                         >
                           Get Started
                         </Button>
-                        <ScrollLink to="about" spy={true} smooth={true} offset={-70} duration={500}>
+                        <ScrollLink
+                          to="about"
+                          spy={true}
+                          smooth={true}
+                          offset={-70}
+                          duration={500}
+                        >
                           <Button
                             variant="outlined"
                             size="large"
@@ -658,7 +671,7 @@ export default function Home() {
                   width: "100%",
                   flexGrow: 1,
                   minHeight: { xs: 300, md: "auto" },
-                  background: `url(https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800) center center / cover`,
+                  background: `url(https://img.freepik.com/free-photo/businessman-interacting-with-futuristic-graphics_23-2151003693.jpg?t=st=1762859447~exp=1762863047~hmac=6ce14aaa46008946fc54ca6c8569ac42c437de39da429f4fdfc213d134d4a970&w=1480) center center / cover`,
                   borderRadius: 2,
                   border: "1px solid",
                   borderColor: alpha(theme.palette.primary.main, 0.5),
@@ -948,7 +961,10 @@ export default function Home() {
       </Box>
 
       {/* Contact Form Dialog */}
-      <ContactForm open={contactFormOpen} onClose={() => setContactFormOpen(false)} />
+      <ContactForm
+        open={contactFormOpen}
+        onClose={() => setContactFormOpen(false)}
+      />
     </Box>
   );
 }
