@@ -57,7 +57,7 @@ export default function ContactForm({ open, onClose }) {
       };
 
       const response = await fetch(
-        "d1324k2la2yyhy.cloudfront.net/contact/inquiry",
+        "https://d1324k2la2yyhy.cloudfront.net/contact/inquiry",
         {
           method: "POST",
           headers: {
