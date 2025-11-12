@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -11,11 +11,6 @@ import {
   Snackbar,
   alpha,
   CircularProgress,
-  MenuItem,
-  Select,
-  FormControl,
-  InputLabel,
-  FormHelperText,
 } from "@mui/material";
 import {
   Close,
@@ -27,22 +22,7 @@ import {
 } from "@mui/icons-material";
 import { useForm, Controller } from "react-hook-form";
 
-// Country codes data
-const countryCodes = [
-  { code: "+1", flag: "🇺🇸", name: "USA", country: "US" },
-  { code: "+44", flag: "🇬🇧", name: "UK", country: "GB" },
-  { code: "+91", flag: "🇮🇳", name: "India", country: "IN" },
-  { code: "+33", flag: "🇫🇷", name: "France", country: "FR" },
-  { code: "+49", flag: "🇩🇪", name: "Germany", country: "DE" },
-  { code: "+81", flag: "🇯🇵", name: "Japan", country: "JP" },
-  { code: "+86", flag: "🇨🇳", name: "China", country: "CN" },
-  { code: "+61", flag: "🇦🇺", name: "Australia", country: "AU" },
-  { code: "+971", flag: "🇦🇪", name: "UAE", country: "AE" },
-  { code: "+65", flag: "🇸🇬", name: "Singapore", country: "SG" },
-];
-
 export default function ContactForm({ open, onClose }) {
-  const [selectedCountry, setSelectedCountry] = useState(countryCodes[2]); // Default to India
   const [loading, setLoading] = useState(false);
   const [snackbar, setSnackbar] = useState({
     open: false,
@@ -65,70 +45,22 @@ export default function ContactForm({ open, onClose }) {
     },
   });
 
-  // Detect user's country based on timezone
-  useEffect(() => {
-    const detectCountry = () => {
-      const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-
-      let detectedCountry = countryCodes[2]; // Default to India
-
-      if (
-        timezone.includes("Europe/London") ||
-        timezone.includes("Europe/Dublin")
-      ) {
-        detectedCountry = countryCodes.find((c) => c.country === "GB");
-      } else if (
-        timezone.includes("Asia/Kolkata") ||
-        timezone.includes("Asia/Calcutta")
-      ) {
-        detectedCountry = countryCodes.find((c) => c.country === "IN");
-      } else if (
-        timezone.includes("America/New_York") ||
-        timezone.includes("America/Los_Angeles")
-      ) {
-        detectedCountry = countryCodes.find((c) => c.country === "US");
-      } else if (timezone.includes("Europe/Paris")) {
-        detectedCountry = countryCodes.find((c) => c.country === "FR");
-      } else if (timezone.includes("Europe/Berlin")) {
-        detectedCountry = countryCodes.find((c) => c.country === "DE");
-      } else if (timezone.includes("Asia/Tokyo")) {
-        detectedCountry = countryCodes.find((c) => c.country === "JP");
-      } else if (timezone.includes("Asia/Shanghai")) {
-        detectedCountry = countryCodes.find((c) => c.country === "CN");
-      } else if (timezone.includes("Australia/Sydney")) {
-        detectedCountry = countryCodes.find((c) => c.country === "AU");
-      } else if (timezone.includes("Asia/Dubai")) {
-        detectedCountry = countryCodes.find((c) => c.country === "AE");
-      } else if (timezone.includes("Asia/Singapore")) {
-        detectedCountry = countryCodes.find((c) => c.country === "SG");
-      }
-
-      setSelectedCountry(detectedCountry);
-    };
-
-    detectCountry();
-  }, []);
-
   const onSubmit = async (data) => {
     setLoading(true);
 
     try {
-      // Prepare the data with country code
+      // Prepare the data
       const formData = {
+        timestamp: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
         ...data,
-        phone: `${selectedCountry.code}${data.phone}`,
-        country: selectedCountry.name,
-        timestamp: new Date().toISOString(),
       };
 
+      console.log(formData);
+      
+
       // Replace this URL with your actual backend endpoint
-      const response = await fetch("https://your-backend-api.com/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      // For demonstration, we'll simulate a successful response
+      const response = { ok: true }; // await fetch(...)
 
       if (response.ok) {
         setSnackbar({
@@ -277,14 +209,15 @@ export default function ContactForm({ open, onClose }) {
                 )}
               />
 
-              {/* Phone Field with Country Selector */}
-
+              {/* Phone Field */}
               <Controller
                 name="phone"
                 control={control}
                 rules={{
                   required: "Phone number is required",
                   pattern: {
+                    value:
+                      /^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,6}$/,
                     message: "Please enter a valid phone number",
                   },
                 }}
@@ -338,9 +271,6 @@ export default function ContactForm({ open, onClose }) {
                 control={control}
                 rules={{
                   required: "Message is required",
-                  minLength: {
-                    message: "Message must be at least 10 characters",
-                  },
                 }}
                 render={({ field }) => (
                   <TextField

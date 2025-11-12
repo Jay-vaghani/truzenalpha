@@ -1,35 +1,35 @@
-import React from 'react';
-import { ThemeProvider, createTheme, CssBaseline, Box } from '@mui/material';
-import Home from './pages/Home';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
+import React from "react";
+import { ThemeProvider, createTheme, CssBaseline, Box } from "@mui/material";
+import Home from "./pages/Home";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 const theme = createTheme({
   palette: {
-    mode: 'dark',
+    mode: "dark",
     primary: {
-      main: '#00e5ff', // Neon Blue
+      main: "#00e5ff", // Neon Blue
     },
     secondary: {
-      main: '#9e9e9e', // A neutral grey for secondary elements
+      main: "#9e9e9e", // A neutral grey for secondary elements
     },
     background: {
-      default: '#000000',
-      paper: 'rgba(10, 25, 47, 0.5)', // Dark, semi-transparent blue
+      default: "#000000",
+      paper: "rgba(10, 25, 47, 0.5)", // Dark, semi-transparent blue
     },
     text: {
-      primary: '#ffffff',
-      secondary: '#a0c4ff', // Light blue-ish grey for subtitles
+      primary: "#ffffff",
+      secondary: "#a0c4ff", // Light blue-ish grey for subtitles
     },
   },
   typography: {
     fontFamily: "'Rajdhani', sans-serif",
-    h1: { fontFamily: "'Orbitron', sans-serif", textTransform: 'uppercase' },
-    h2: { fontFamily: "'Orbitron', sans-serif", textTransform: 'uppercase' },
-    h3: { fontFamily: "'Orbitron', sans-serif", textTransform: 'uppercase' },
-    h4: { fontFamily: "'Orbitron', sans-serif", textTransform: 'uppercase' },
-    h5: { fontFamily: "'Orbitron', sans-serif", textTransform: 'uppercase' },
-    h6: { fontFamily: "'Orbitron', sans-serif", textTransform: 'uppercase' },
+    h1: { fontFamily: "'Orbitron', sans-serif", textTransform: "uppercase" },
+    h2: { fontFamily: "'Orbitron', sans-serif", textTransform: "uppercase" },
+    h3: { fontFamily: "'Orbitron', sans-serif", textTransform: "uppercase" },
+    h4: { fontFamily: "'Orbitron', sans-serif", textTransform: "uppercase" },
+    h5: { fontFamily: "'Orbitron', sans-serif", textTransform: "uppercase" },
+    h6: { fontFamily: "'Orbitron', sans-serif", textTransform: "uppercase" },
   },
 });
 
@@ -49,7 +49,14 @@ export default function App() {
           }
         `}
       </style>
-      <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', bgcolor: 'background.default' }}>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          minHeight: "100vh",
+          bgcolor: "background.default",
+        }}
+      >
         <Navbar />
         <Box component="main" sx={{ flexGrow: 1 }}>
           <Home />

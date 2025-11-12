@@ -93,7 +93,7 @@ export default function Home() {
       title: "Welcome to Truzen Alpha",
       subtitle: "Your All-in-One Trading Solutions Partner",
       image:
-        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=80",
+        "https://img.freepik.com/premium-photo/collage-finance-banner-concept_23-2150608820.jpg",
       background:
         "https://images.unsplash.com/photo-1642790106117-e829e14a795f?w=1920&auto=format&fit=crop&q=80",
     },
@@ -102,7 +102,7 @@ export default function Home() {
       subtitle:
         "From strategy to execution, fully automated solutions that deliver results",
       image:
-        "https://plus.unsplash.com/premium_photo-1664478157873-50d4963c1d11?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2069",
+        "https://img.freepik.com/premium-photo/artificial-intelligence-analyzing-business-performance-driving-positive-financial-growth-trends_1320126-224.jpg",
       background:
         "https://images.unsplash.com/photo-1639322537228-f710d846310a?w=1920&auto=format&fit=crop&q=80",
     },
@@ -110,7 +110,7 @@ export default function Home() {
       title: "Multi-Market Expertise",
       subtitle: "Indian, Forex, Crypto & Global Markets Covered",
       image:
-        "https://img.freepik.com/free-photo/beautiful-cryptocurrwncy-concept_23-2149250205.jpg?t=st=1762859666~exp=1762863266~hmac=904c5901bcd43841a29a7b9aa6afb863a3684e2ebcc2d1afe5b7202f79a9833b&w=1480",
+        "https://img.freepik.com/premium-photo/collage-finance-banner-concept_23-2150608830.jpg",
       background:
         "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=1920&auto=format&fit=crop&q=80",
     },
@@ -189,7 +189,7 @@ export default function Home() {
     {
       icon: <Build />,
       title: "Custom Indicator Development",
-      description: "On TradingView, MetaTrader, NinjaTrader, C Trader and more",
+      description: "On TradingView, MetaTrader, NinjaTrader, and more",
     },
     {
       icon: <History />,
@@ -298,12 +298,12 @@ export default function Home() {
     },
     {
       name: "Trading Platforms",
-      details: "TradingView, MetaTrader, NinjaTrader",
+      details: "TradingView, MetaTrader, NinjaTrader, cTrader",
       icon: <CandlestickChart />,
     },
     {
       name: "Forex Brokers",
-      details: "IC Markets, Pepperstone, FXTM, XNS, Vantage",
+      details: "IC Markets, Pepperstone, FXTM, Exness, Vantage",
       icon: <CurrencyExchange />,
     },
     {
@@ -390,7 +390,14 @@ export default function Home() {
       {/* Hero Section */}
       <Box
         id="home"
-        sx={{ height: "100vh", position: "relative", color: "white" }}
+        sx={{
+          minHeight: "100vh",
+          position: "relative",
+          color: "white",
+          pt: { xs: "56px", sm: "64px" }, // Add padding top to offset navbar height
+          height: "100vh",
+          boxSizing: "border-box", // Ensure padding is included in the height
+        }}
       >
         <style>
           {`
@@ -408,20 +415,20 @@ export default function Home() {
               animation: fadeInRight 0.8s ease-out 0.3s forwards;
             }
             .swiper-slide-active .hero-image-content {
-              animation: fadeInRight 0.8s ease-out 0.6s forwards;
+              animation: fadeInRight 0.8s ease-out 0.4s forwards;
             }
           `}
         </style>
         <Swiper
           modules={[Autoplay, EffectFade]}
           effect="fade"
-          fadeEffect={{ crossFade: true }}
+          fadeEffect={{ crossFade: false }}
           loop={true}
           autoplay={{
             delay: 5000,
             disableOnInteraction: false,
           }}
-          style={{ height: "100%" }}
+          style={{ height: "100%", marginTop: "16px" }}
         >
           {heroSlides.map((slide, index) => (
             <SwiperSlide key={index}>
@@ -544,20 +551,29 @@ export default function Home() {
                       sx={{ opacity: 0 }}
                     >
                       <Box
-                        component="img"
-                        src={slide.image}
                         alt={slide.title}
                         sx={{
                           width: "100%",
+                          height: "300px",
                           borderRadius: 2,
                           border: "1px solid",
                           borderColor: alpha(theme.palette.primary.main, 0.5),
-                          boxShadow: `0 0 25px ${alpha(
-                            theme.palette.primary.main,
-                            0.3
-                          )}`,
                         }}
-                      />
+                      >
+                        <img
+                          src={slide.image}
+                          alt={slide.title}
+                          style={{
+                            width: "100%",
+                            height: "100%",
+                            borderRadius: "8px",
+                            objectFit: "cover",
+                            borderRadius: 2,
+                            border: "1px solid",
+                            borderColor: alpha("rgba(0, 0, 0, 0.5)", 0.5),
+                          }}
+                        />
+                      </Box>
                     </Grid>
                   </Grid>
                 </Container>
@@ -656,197 +672,200 @@ export default function Home() {
         </Grid>
       </Container>
 
-      {/* What We Offer Section */}
-      <Box id="about" sx={{ bgcolor: alpha("#000", 0.2), py: 10 }}>
-        <Container maxWidth="lg">
-          <Grid container spacing={6} alignItems="stretch">
-            <Grid
-              size={{ xs: 12, md: 6 }}
-              data-aos="fade-right"
-              sx={{ display: "flex" }}
-            >
-              <Box
-                alt="Custom Solutions"
-                sx={{
-                  width: "100%",
-                  flexGrow: 1,
-                  minHeight: { xs: 300, md: "auto" },
-                  background: `url(https://img.freepik.com/free-photo/businessman-interacting-with-futuristic-graphics_23-2151003693.jpg?t=st=1762859447~exp=1762863047~hmac=6ce14aaa46008946fc54ca6c8569ac42c437de39da429f4fdfc213d134d4a970&w=1480) center center / cover`,
-                  borderRadius: 2,
-                  border: "1px solid",
-                  borderColor: alpha(theme.palette.primary.main, 0.5),
-                  boxShadow: `0 0 25px ${alpha(
-                    theme.palette.primary.main,
-                    0.3
-                  )}`,
-                }}
-              ></Box>
-            </Grid>
-            <Grid size={{ xs: 12, md: 6 }} data-aos="fade-left">
-              <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  height: "100%",
-                  p: { xs: 2, sm: 3 },
-                }}
+      {/* Services Wrapper for Scroll Spy */}
+      <Box id="services">
+        {/* What We Offer Section */}
+        <Box sx={{ bgcolor: alpha("#000", 0.2), py: 10 }}>
+          <Container maxWidth="lg">
+            <Grid container spacing={6} alignItems="stretch">
+              <Grid
+                size={{ xs: 12, md: 6 }}
+                data-aos="fade-right"
+                sx={{ display: "flex" }}
               >
-                <h2
-                  className="neon-glow"
-                  style={{
-                    marginBottom: "1rem",
-                    fontWeight: 700,
-                    fontSize: "clamp(2rem, 4vw, 3rem)",
-                    color: theme.palette.primary.main,
+                <Box
+                  alt="Custom Solutions"
+                  sx={{
+                    width: "100%",
+                    flexGrow: 1,
+                    minHeight: { xs: 300, md: "auto" },
+                    background: `url(https://img.freepik.com/free-photo/businessman-interacting-with-futuristic-graphics_23-2151003693.jpg?w=1480) center center / cover`,
+                    borderRadius: 2,
+                    border: "1px solid",
+                    borderColor: alpha(theme.palette.primary.main, 0.5),
+                    boxShadow: `0 0 25px ${alpha(
+                      theme.palette.primary.main,
+                      0.3
+                    )}`,
+                  }}
+                ></Box>
+              </Grid>
+              <Grid size={{ xs: 12, md: 6 }} data-aos="fade-left">
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    height: "100%",
+                    p: { xs: 2, sm: 3 },
                   }}
                 >
-                  WHAT WE OFFER
-                </h2>
-                <p
-                  style={{
-                    marginBottom: "2.5rem",
-                    color: theme.palette.text.secondary,
-                    fontWeight: 400,
-                    fontSize: "clamp(1rem, 2vw, 1.1rem)",
-                    lineHeight: 1.7,
-                  }}
-                >
-                  We offer end-to-end solutions for traders and firms:
-                </p>
-                <Grid container spacing={3}>
-                  {offerings.map((offer, index) => (
-                    <Grid size={{ xs: 12, sm: 6 }} key={index}>
-                      <Box
-                        sx={{
+                  <h2
+                    className="neon-glow"
+                    style={{
+                      marginBottom: "1rem",
+                      fontWeight: 700,
+                      fontSize: "clamp(2rem, 4vw, 3rem)",
+                      color: theme.palette.primary.main,
+                    }}
+                  >
+                    WHAT WE OFFER
+                  </h2>
+                  <p
+                    style={{
+                      marginBottom: "2.5rem",
+                      color: theme.palette.text.secondary,
+                      fontWeight: 400,
+                      fontSize: "clamp(1rem, 2vw, 1.1rem)",
+                      lineHeight: 1.7,
+                    }}
+                  >
+                    We offer end-to-end solutions for traders and firms:
+                  </p>
+                  <Grid container spacing={3}>
+                    {offerings.map((offer, index) => (
+                      <Grid size={{ xs: 12, sm: 6 }} key={index}>
+                        <Box
+                          sx={{
+                            display: "flex",
+                            alignItems: "flex-start",
+                            gap: 1.5,
+                          }}
+                        >
+                          <Box sx={{ color: "primary.main", mt: "4px" }}>
+                            {React.cloneElement(offer.icon, {
+                              sx: { fontSize: "1.8rem" },
+                            })}
+                          </Box>
+                          <div>
+                            <h6
+                              style={{
+                                margin: 0,
+                                fontWeight: 600,
+                                color: "white",
+                                fontSize: "1.1rem",
+                              }}
+                            >
+                              {offer.title}
+                            </h6>
+                            <p
+                              style={{
+                                margin: 0,
+                                color: theme.palette.text.secondary,
+                                fontSize: "0.9rem",
+                                lineHeight: 1.5,
+                              }}
+                            >
+                              {offer.description}
+                            </p>
+                          </div>
+                        </Box>
+                      </Grid>
+                    ))}
+                  </Grid>
+                </Box>
+              </Grid>
+            </Grid>
+          </Container>
+        </Box>
+
+        {/* Who We Serve Section */}
+        <Box sx={{ py: 10 }}>
+          <Container maxWidth="lg">
+            <h2
+              className="neon-glow"
+              style={{
+                textAlign: "center",
+                marginBottom: "1rem",
+                fontWeight: 700,
+                fontSize: "clamp(2rem, 4vw, 3rem)",
+                color: theme.palette.primary.main,
+              }}
+              data-aos="fade-up"
+            >
+              WHO WE SERVE
+            </h2>
+            <p
+              style={{
+                textAlign: "center",
+                maxWidth: "800px",
+                margin: "0 auto 4rem auto",
+                color: theme.palette.text.secondary,
+                fontWeight: 400,
+                fontSize: "clamp(1rem, 2vw, 1.1rem)",
+                lineHeight: 1.7,
+              }}
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              Our solutions are tailored to meet the unique needs of various
+              market participants.
+            </p>
+
+            <Grid container spacing={4} justifyContent="center">
+              {services.map((service, index) => (
+                <Grid size={{ xs: 12, sm: 6, md: 4 }} key={index}>
+                  <Card
+                    data-aos="fade-up"
+                    data-aos-delay={index * 100}
+                    sx={{
+                      height: "100%",
+                      bgcolor: "transparent",
+                      border: "2px solid",
+                      borderColor: alpha(service.color, 0.5),
+                      transition:
+                        "transform 0.3s, box-shadow 0.3s, border-color 0.3s",
+                      "&:hover": {
+                        transform: "scale(1.05)",
+                        borderColor: service.color,
+                        boxShadow: `0 0 30px ${alpha(service.color, 0.6)}`,
+                      },
+                    }}
+                  >
+                    <CardContent sx={{ textAlign: "center", p: 4 }}>
+                      <Box sx={{ color: service.color, mb: 2 }}>
+                        {service.icon}
+                      </Box>
+                      <h5
+                        style={{
+                          marginBottom: "1rem",
+                          fontWeight: 600,
+                          fontSize: "1.5rem",
+                          color: "white",
+                          minHeight: "64px",
                           display: "flex",
-                          alignItems: "flex-start",
-                          gap: 1.5,
+                          alignItems: "center",
+                          justifyContent: "center",
                         }}
                       >
-                        <Box sx={{ color: "primary.main", mt: "4px" }}>
-                          {React.cloneElement(offer.icon, {
-                            sx: { fontSize: "1.8rem" },
-                          })}
-                        </Box>
-                        <div>
-                          <h6
-                            style={{
-                              margin: 0,
-                              fontWeight: 600,
-                              color: "white",
-                              fontSize: "1.1rem",
-                            }}
-                          >
-                            {offer.title}
-                          </h6>
-                          <p
-                            style={{
-                              margin: 0,
-                              color: theme.palette.text.secondary,
-                              fontSize: "0.9rem",
-                              lineHeight: 1.5,
-                            }}
-                          >
-                            {offer.description}
-                          </p>
-                        </div>
-                      </Box>
-                    </Grid>
-                  ))}
+                        {service.title}
+                      </h5>
+                      <p
+                        style={{
+                          color: theme.palette.text.secondary,
+                          fontSize: "1rem",
+                          margin: 0,
+                          lineHeight: 1.6,
+                        }}
+                      >
+                        {service.description}
+                      </p>
+                    </CardContent>
+                  </Card>
                 </Grid>
-              </Box>
+              ))}
             </Grid>
-          </Grid>
-        </Container>
-      </Box>
-
-      {/* Services Section */}
-      <Box id="services" sx={{ py: 10 }}>
-        <Container maxWidth="lg">
-          <h2
-            className="neon-glow"
-            style={{
-              textAlign: "center",
-              marginBottom: "1rem",
-              fontWeight: 700,
-              fontSize: "clamp(2rem, 4vw, 3rem)",
-              color: theme.palette.primary.main,
-            }}
-            data-aos="fade-up"
-          >
-            WHO WE SERVE
-          </h2>
-          <p
-            style={{
-              textAlign: "center",
-              maxWidth: "800px",
-              margin: "0 auto 4rem auto",
-              color: theme.palette.text.secondary,
-              fontWeight: 400,
-              fontSize: "clamp(1rem, 2vw, 1.1rem)",
-              lineHeight: 1.7,
-            }}
-            data-aos="fade-up"
-            data-aos-delay="100"
-          >
-            Our solutions are tailored to meet the unique needs of various
-            market participants.
-          </p>
-
-          <Grid container spacing={4} justifyContent="center">
-            {services.map((service, index) => (
-              <Grid size={{ xs: 12, sm: 6, md: 4 }} key={index}>
-                <Card
-                  data-aos="fade-up"
-                  data-aos-delay={index * 100}
-                  sx={{
-                    height: "100%",
-                    bgcolor: "transparent",
-                    border: "2px solid",
-                    borderColor: alpha(service.color, 0.5),
-                    transition:
-                      "transform 0.3s, box-shadow 0.3s, border-color 0.3s",
-                    "&:hover": {
-                      transform: "scale(1.05)",
-                      borderColor: service.color,
-                      boxShadow: `0 0 30px ${alpha(service.color, 0.6)}`,
-                    },
-                  }}
-                >
-                  <CardContent sx={{ textAlign: "center", p: 4 }}>
-                    <Box sx={{ color: service.color, mb: 2 }}>
-                      {service.icon}
-                    </Box>
-                    <h5
-                      style={{
-                        marginBottom: "1rem",
-                        fontWeight: 600,
-                        fontSize: "1.5rem",
-                        color: "white",
-                        minHeight: "64px",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                      }}
-                    >
-                      {service.title}
-                    </h5>
-                    <p
-                      style={{
-                        color: theme.palette.text.secondary,
-                        fontSize: "1rem",
-                        margin: 0,
-                        lineHeight: 1.6,
-                      }}
-                    >
-                      {service.description}
-                    </p>
-                  </CardContent>
-                </Card>
-              </Grid>
-            ))}
-          </Grid>
-        </Container>
+          </Container>
+        </Box>
       </Box>
 
       {/* Technologies Section */}
