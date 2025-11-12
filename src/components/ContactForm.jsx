@@ -49,34 +49,45 @@ export default function ContactForm({ open, onClose }) {
     setLoading(true);
 
     try {
-      // Prepare the data
       const formData = {
-        timestamp: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
+        timestamp: new Date().toLocaleString("en-IN", {
+          timeZone: "Asia/Kolkata",
+        }),
         ...data,
       };
 
-      console.log(formData);
-      
+      const response = await fetch(
+        "d1324k2la2yyhy.cloudfront.net/contact/inquiry",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
-      // Replace this URL with your actual backend endpoint
-      // For demonstration, we'll simulate a successful response
-      const response = { ok: true }; // await fetch(...)
+      const result = await response.json();
+
+      // Log the full response from the backend to the browser console
+      console.log("Response from backend:", result);
 
       if (response.ok) {
         setSnackbar({
           open: true,
-          message: "Message received! We will contact you soon.",
+          message: result.message, // Use the message from the backend
           severity: "success",
         });
         reset();
         setTimeout(() => onClose(), 2000);
       } else {
-        throw new Error("Failed to send message");
+        // Use the error message from the backend if available
+        throw new Error(result.message || "An error occurred.");
       }
     } catch (error) {
       setSnackbar({
         open: true,
-        message: "Failed to send message. Please try again.",
+        message: error.message,
         severity: "error",
       });
     } finally {

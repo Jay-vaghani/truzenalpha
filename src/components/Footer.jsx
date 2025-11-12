@@ -32,7 +32,7 @@ export default function Footer() {
               <IconButton href="https://www.linkedin.com/company/truzen-alpha-trading-solutions" target="_blank" rel="noopener noreferrer" sx={{ color: 'text.secondary', '&:hover': { color: 'primary.main' } }}><LinkedIn /></IconButton>
               <IconButton href="https://wa.me/919106976079" target="_blank" rel="noopener noreferrer" sx={{ color: 'text.secondary', '&:hover': { color: 'primary.main' } }}><WhatsApp /></IconButton>
               <IconButton sx={{ color: 'text.secondary', '&:hover': { color: 'primary.main' } }}><X /></IconButton>
-              <IconButton sx={{ color: 'text.secondary', '&:hover': { color: 'primary.main' } }}><Instagram /></IconButton>
+              <IconButton href='https://www.instagram.com/truzenalpha/' target="_blank" rel="noopener noreferrer" sx={{ color: 'text.secondary', '&:hover': { color: 'primary.main' } }}><Instagram /></IconButton>
             </Box>
           </Grid>
           <Grid item xs={6} md={2}>
